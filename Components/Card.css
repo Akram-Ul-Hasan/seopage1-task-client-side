@@ -1,0 +1,72 @@
+.card{
+    margin: 3px;
+    width: 300px;
+}
+.image{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.textWithIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+/* card top  */
+.cardTop{
+    display: flex;
+    justify-content: space-between;
+}
+.client{
+    display: flex;
+    align-items: center;
+}
+
+.clientName{
+    
+}
+.person{
+    display: flex;
+    align-items: center;
+}
+
+.personName{
+
+}
+
+/* card middle  */
+.cardMiddle{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task{
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    padding: 5px;
+    height: 25px;
+}
+
+/* card bottom  */
+.cardBottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.peopleList{
+    display: flex;
+    align-items: center;
+}
+.peopleListText{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e7e7e7;
+}
