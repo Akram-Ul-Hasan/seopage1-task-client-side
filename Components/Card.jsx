@@ -7,7 +7,10 @@ import {
 } from "react-icons/fa";
 import { ImAttachment } from "react-icons/im";
 
-const Card = () => {
+const Card = ({data}) => {
+  
+  const fileCount = data?.files?.length;
+  console.log(fileCount);
   return (
     <div className="card">
       <div className="cardTop">
@@ -62,7 +65,7 @@ const Card = () => {
             <ImAttachment />
           </div>
           <div>
-            <h5>25</h5>
+            <h5>{fileCount}</h5>
           </div>
         </div>
 
