@@ -8,7 +8,7 @@ const Container = ({ title }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/attachment/?title=${title}`)
+      .get(`https://seop-age1-job-task-server-side.vercel.app/attachment/?title=${title}`)
       .then((response) => {
         setData(response.data);
       })

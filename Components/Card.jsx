@@ -36,7 +36,7 @@ const Card = ({ data }) => {
             formData.append('files', file);
         });
 
-        const response = await axios.patch(`http://localhost:5000/attachment/${data?._id}`, formData, {
+        const response = await axios.patch(`https://seop-age1-job-task-server-side.vercel.app/attachment/${data?._id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
