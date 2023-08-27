@@ -9,8 +9,10 @@ import {
 import { ImAttachment } from "react-icons/im";
 import axios from "axios";
 
+
 const Card = ({ data }) => {
   const fileCount = data?.files?.length;
+  const id = data?._id;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
 
@@ -36,7 +38,7 @@ const Card = ({ data }) => {
             formData.append('files', file);
         });
 
-        const response = await axios.patch(`https://seop-age1-job-task-server-side.vercel.app/attachment/${data?._id}`, formData, {
+        const response = await axios.patch(`https://seop-age1-job-task-server-side.vercel.app/attachment/${id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -53,12 +55,12 @@ const Card = ({ data }) => {
     <div className="card">
       <div className="cardTop">
         <div className="client">
-          <img className="image" src="/public/client.jpg" alt="" />
+          <img className="image" src="https://i.ibb.co/bRHpYFj/akram.jpg" alt="" />
           <h5 className="clientName">Client Name</h5>
         </div>
 
         <div className="person">
-          <img className="image" src="/public/people.jpg" alt="" />
+          <img className="image" src="https://i.ibb.co/nj2Dtj2/instructor.jpg" alt="" />
           <h5 className="personName">Sadik Istiak</h5>
         </div>
       </div>
@@ -85,8 +87,8 @@ const Card = ({ data }) => {
 
       <div className="cardBottom">
         <div className="peopleList">
-          <img className="image" src="/public/client.jpg" alt="" />
-          <img className="image" src="/public/people.jpg" alt="" />
+          <img className="image" src="https://i.ibb.co/bRHpYFj/akram.jpg" alt="" />
+          <img className="image" src="https://i.ibb.co/nj2Dtj2/instructor.jpg" alt="" />
           <h5 className="peopleListText">12+</h5>
         </div>
 
