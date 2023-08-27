@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Card.css";
 import {
   FaLayerGroup,
@@ -6,11 +7,48 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 import { ImAttachment } from "react-icons/im";
+import axios from "axios";
 
-const Card = ({data}) => {
-  
+const Card = ({ data }) => {
   const fileCount = data?.files?.length;
-  console.log(fileCount);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const openModal = () => {
+      setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+      setIsModalOpen(false);
+  };
+
+  const handleFileChange = (event) => {
+      const fileList = event.target.files;
+      const filesArray = Array.from(fileList);
+
+      setSelectedFiles(filesArray);
+  };
+
+  const handleFileSubmit = async () => {
+    try {
+        const formData = new FormData();
+        selectedFiles.forEach(file => {
+            formData.append('files', file);
+        });
+
+        const response = await axios.patch(`http://localhost:5000/attachment/${data?._id}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log('Files uploaded and updated:', response.data);
+
+        closeModal();
+    } catch (error) {
+        console.error('Error uploading files:', error);
+    }
+};
+
   return (
     <div className="card">
       <div className="cardTop">
@@ -60,7 +98,7 @@ const Card = ({data}) => {
             <h5>15</h5>
           </div>
         </div>
-        <div className="textWithIcon">
+        <div onClick={openModal} className="textWithIcon clickable-div">
           <div>
             <ImAttachment />
           </div>
@@ -78,6 +116,24 @@ const Card = ({data}) => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={closeModal}>&times;</span>
+                        <h2>Select One or Multiple Files</h2>
+                        <input type="file" multiple onChange={handleFileChange} />
+                        <button onClick={handleFileSubmit}>Submit</button>
+                        <div className="file-list">
+                            {selectedFiles.map((file, index) => (
+                                <div key={index} className="file-item">
+                                    <p>File Name: {file.name}</p>
+                                    <p>Extension: {file.name.split('.').pop()}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
     </div>
   );
 };

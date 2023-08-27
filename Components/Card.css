@@ -2,6 +2,7 @@
     margin: 3px;
     width: 300px;
 }
+/* common style */
 .image{
     width: 30px;
     height: 30px;
@@ -24,17 +25,12 @@
     align-items: center;
 }
 
-.clientName{
-    
-}
+
 .person{
     display: flex;
     align-items: center;
 }
 
-.personName{
-
-}
 
 /* card middle  */
 .cardMiddle{
@@ -69,4 +65,51 @@
     justify-content: center;
     align-items: center;
     background-color: #e7e7e7;
+}
+
+
+/* modal  */
+
+.clickable-div {
+    cursor: pointer;
+}
+
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+}
+
+.file-list {
+    margin-top: 20px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.file-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
 }
